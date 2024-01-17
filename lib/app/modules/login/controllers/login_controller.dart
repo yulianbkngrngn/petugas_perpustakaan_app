@@ -1,3 +1,6 @@
+
+import 'dart:developer';
+
 import 'package:dio/dio.dart' as dio;
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -22,6 +25,11 @@ class LoginController extends GetxController {
   @override
   void onReady() {
     super.onReady();
+    String status = StorageProvider.read(StorageKey.status);
+    log("status : $status");
+    if(status == "logged"){
+      Get.offAllNamed(Routes.HOME);
+    }
   }
 
   @override
